@@ -1,7 +1,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using TodoApp.Services.STodoItem;
 namespace TodoApp.Services;
-public static class ServicesModule
+public static class ServiceModule
 {
     public static void Register(IServiceCollection services)
     {

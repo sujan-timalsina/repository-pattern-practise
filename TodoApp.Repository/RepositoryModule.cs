@@ -6,7 +6,7 @@ public static class RepositoryModule
 {
     public static void Register(IServiceCollection services, string connection, string migrationsAssembly)
     {
-        services.AddDbContext<TodoAppContext>(options => options.UseSqlite(connection, builder => builder.MigrationsAssembly(migrationsAssembly)));
+        // services.AddDbContext<TodoAppContext>(options => options.UseSqlite(connection, builder => builder.MigrationsAssembly(migrationsAssembly)));
         services.AddTransient<ITodoItemRepository, TodoItemRepository>();
 
     }
