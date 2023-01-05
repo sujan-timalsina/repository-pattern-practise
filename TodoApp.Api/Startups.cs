@@ -6,21 +6,19 @@ namespace TodoApp.Api
     public class Startups
     {
         public IConfiguration Configuration { get; }
-        public IWebHostEnvironment Environment { get; }
         public Startups(IConfiguration configuration, IWebHostEnvironment environment)
         {
             Configuration = configuration;
-            Environment = environment;
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             RepositoryModule.Register(services,
-                Configuration.GetConnectionString("DefaultConnection"),
-                GetType().Assembly.FullName);
+                Configuration.GetConnectionString("DefaultConnection"));
             ServiceModule.Register(services);
             services.AddControllers();
+            services.AddSwaggerGen();
             // services.AddMvc(option => option.EnableEndpointRouting = false).SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddCors(allowsites =>
             {
@@ -33,6 +31,8 @@ namespace TodoApp.Api
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseSwagger();
+                app.UseSwaggerUI();
             }
             else
             {

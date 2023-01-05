@@ -4,9 +4,14 @@ using TodoApp.Repository.RTodoItem;
 namespace TodoApp.Repository;
 public static class RepositoryModule
 {
-    public static void Register(IServiceCollection services, string connection, string migrationsAssembly)
+    public static void Register(IServiceCollection services, string connection)
     {
-        // services.AddDbContext<TodoAppContext>(options => options.UseSqlite(connection, builder => builder.MigrationsAssembly(migrationsAssembly)));
+        string migrationsAssembly = System.Reflection.Assembly.GetExecutingAssembly().GetName().Name;
+
+        services.AddDbContext<TodoAppContext>(options => options.UseSqlite(
+            connection,
+            builder => builder.MigrationsAssembly(migrationsAssembly)
+        ));
         services.AddTransient<ITodoItemRepository, TodoItemRepository>();
 
     }
