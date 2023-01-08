@@ -14,8 +14,7 @@ namespace TodoApp.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            RepositoryModule.Register(services,
-                Configuration.GetConnectionString("DefaultConnection"));
+            RepositoryModule.Register(services);
             ServiceModule.Register(services);
             services.AddControllers();
             services.AddSwaggerGen();
