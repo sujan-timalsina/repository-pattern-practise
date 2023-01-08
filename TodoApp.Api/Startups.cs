@@ -6,7 +6,7 @@ namespace TodoApp.Api
     public class Startups
     {
         public IConfiguration Configuration { get; }
-        public Startups(IConfiguration configuration, IWebHostEnvironment environment)
+        public Startups(IConfiguration configuration)
         {
             Configuration = configuration;
         }

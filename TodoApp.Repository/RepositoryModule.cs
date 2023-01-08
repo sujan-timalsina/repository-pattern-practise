@@ -8,7 +8,7 @@ public static class RepositoryModule
     {
         string migrationsAssembly = System.Reflection.Assembly.GetExecutingAssembly().GetName().Name;
 
-        services.AddDbContext<TodoAppContext>(options => options.UseSqlite(
+        services.AddDbContext<TodoAppContext>(options => options.UseSqlServer(
             connection,
             builder => builder.MigrationsAssembly(migrationsAssembly)
         ));
